@@ -39,7 +39,8 @@ class EpisodesController: UITableViewController {
                 var episodes = [Episode]() // blank Episode err
                 
                 feed.items?.forEach({ (feedItem) in
-                    let episode = Episode(title: feedItem.title ?? "")
+                    
+                    let episode = Episode(feedItem: feedItem)
                     episodes.append(episode)
                 })
                 
@@ -65,14 +66,8 @@ class EpisodesController: UITableViewController {
     
     fileprivate let cellId = "cellId"
     
-    struct Episode {
-        let title: String
-    }
-    var episodes = [
-        Episode(title: "First Episode"),
-        Episode(title: "Second Episode"),
-        Episode(title: "Third Episode"),
-    ]
+    
+    var episodes = [Episode] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +76,8 @@ class EpisodesController: UITableViewController {
     
     //MARK: - Setup Work
     fileprivate func setupTableView() {
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        let nib = UINib(nibName: "EpisodeCell", bundle: nil)
+    tableView.register(nib, forCellReuseIdentifier: cellId)
     tableView.tableFooterView = UIView()
      }
     
@@ -94,11 +90,15 @@ class EpisodesController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EpisodeCell
         
         let episode = episodes[indexPath.row]
-        cell.textLabel?.text = episode.title
+        cell.episode = episode
         return cell
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 134
+        
     }
 
   }
