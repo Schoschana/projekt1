@@ -1,0 +1,6 @@
+framework module Pods_frog {
+  umbrella header "Pods-frog-umbrella.h"
+
+  export *
+  module * { export * }
+}
