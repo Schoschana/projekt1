@@ -7,5 +7,7 @@ target 'frog' do
 
   # Pods for frog
  pod 'Alamofire'
+ pod 'SDWebImage'
+ pod 'FeedKit'
 
 end

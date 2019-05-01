@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PodcastCell: UITableViewCell {
     @IBOutlet weak var podcastImageView: UIImageView!
@@ -28,17 +29,23 @@ class PodcastCell: UITableViewCell {
             
             episodeCountLabel.text  = "\(podcast.trackCount ?? 0) Episodes"
             
-            print("Loading image  with url:", podcast.artworkUrl600 ?? "")
-            guard  let url = URL(string: podcast.artworkUrl600 ?? "") else { return }
-            URLSession.shared.dataTask(with: url) { (data, _, _) in
-                print("Finished downloading image data:", data)
+           guard  let url = URL(string: podcast.artworkUrl600 ?? "") else { return }
+          
+            
+            
+            
+            //   URLSession.shared.dataTask(with: url) { (data, _, _) in
+           //      print("Finished downloading image data:", data)
                 
-                guard let data = data else { return }
-                
-              self.podcastImageView.image = UIImage(data: data)
+             //    guard let data = data else { return }
+          
+          //     self.podcastImageView.image = UIImage(data: data)
                
                 
-            }.resume()
+      //      }.resume()
+            
+            podcastImageView.sd_setImage(with: url, completed: nil)
+            
         }
     }
 }
