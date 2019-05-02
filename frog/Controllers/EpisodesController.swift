@@ -24,6 +24,14 @@ class EpisodesController: UITableViewController {
         
         guard let feedUrl = podcast?.feedUrl else { return }
         
+        APIService.shared.fetchEpisodes(feedUrl: feedUrl) { (episodes) in
+            self.episodes = episodes
+            DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+         }
+        
+        
         let secureFeedUrl = feedUrl.contains("https") ? feedUrl :
         feedUrl.replacingOccurrences(of: "http", with: "https")
         
@@ -34,34 +42,17 @@ class EpisodesController: UITableViewController {
             print("Successfully parse feed:", result.isSuccess)
             // associative enumeration values
             
-            switch result {
-           case let .rss(feed):
             
-              let imageUrl =  feed.iTunes?.iTunesImage?.attributes?.href
-                var episodes = [Episode]() // blank Episode err
-                
-                feed.items?.forEach({ (feedItem) in
-                    
-                   var episode = Episode(feedItem: feedItem)
-                    episode.imageUrl = imageUrl
-                    episodes.append(episode)
-                })
-                
-                self.episodes = episodes
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
-                
-                
-                
-                break
-            case let .failure(error):
-                print("Failed to parse feeed:", error)
-                break
-                
-            default:
-                print("Found a feed....")
+            
+            if let err = result.error {
+                print("Failed to parse XML feed:", err)
+                return
+            }
+            guard let feed = result.rssFeed else { return}
+            self.episodes = feed.toEpisodes()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+               
             }
           
          })

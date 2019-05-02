@@ -20,7 +20,7 @@ class EpisodeCell: UITableViewCell {
           pubDateLabel.text = dataFormatter.string(from: episode.pubDate)
             
             // url ?
-            let url = URL(string: episode.imageUrl ?? "")
+            let url = URL(string: episode.imageUrl?.toSecureHTTPS() ?? "")
             episodeImageView.sd_setImage(with: url)
         }
     }
