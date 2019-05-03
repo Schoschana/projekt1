@@ -24,6 +24,8 @@
 		22E575C6227A3E1600A2581E /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E575C4227A3E1600A2581E /* EpisodeCell.xib */; };
 		22E575C9227B77DF00A2581E /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E575C8227B77DF00A2581E /* String.swift */; };
 		22E575CB227B988E00A2581E /* RSSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E575CA227B988E00A2581E /* RSSFeed.swift */; };
+		22E575CD227BB86700A2581E /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22E575CC227BB86700A2581E /* PlayerDetailsView.xib */; };
+		22E575CF227BC01D00A2581E /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E575CE227BC01D00A2581E /* PlayerDetailsView.swift */; };
 		C2C7BD2E8F6978C163878DA4 /* Pods_frog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D45F0FF6465348E9EA53FF /* Pods_frog.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		22E575C4227A3E1600A2581E /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
 		22E575C8227B77DF00A2581E /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		22E575CA227B988E00A2581E /* RSSFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeed.swift; sourceTree = "<group>"; };
+		22E575CC227BB86700A2581E /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
+		22E575CE227BC01D00A2581E /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 		75D45F0FF6465348E9EA53FF /* Pods_frog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_frog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F66C97235E7004BAF3BE169 /* Pods-frog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frog.debug.xcconfig"; path = "Target Support Files/Pods-frog/Pods-frog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +138,8 @@
 				22E575BD2270C07500A2581E /* PodcastCell.swift */,
 				22E575C3227A3E1600A2581E /* EpisodeCell.swift */,
 				22E575C4227A3E1600A2581E /* EpisodeCell.xib */,
+				22E575CC227BB86700A2581E /* PlayerDetailsView.xib */,
+				22E575CE227BC01D00A2581E /* PlayerDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E575CD227BB86700A2581E /* PlayerDetailsView.xib in Resources */,
 				22E575A8226FF36F00A2581E /* LaunchScreen.storyboard in Resources */,
 				22E575A5226FF36F00A2581E /* Assets.xcassets in Resources */,
 				22E575C6227A3E1600A2581E /* EpisodeCell.xib in Resources */,
@@ -291,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E575CB227B988E00A2581E /* RSSFeed.swift in Sources */,
+				22E575CF227BC01D00A2581E /* PlayerDetailsView.swift in Sources */,
 				22E575B32270523600A2581E /* PodcastsSearchController.swift in Sources */,
 				22E575C9227B77DF00A2581E /* String.swift in Sources */,
 				22E575A0226FF36E00A2581E /* ViewController.swift in Sources */,

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="e7a-II-EKh" customClass="PlayerDetailsView" customModule="frog" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Cs-0O-uLo">
+                    <rect key="frame" x="24" y="44" width="366" height="794"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cam-Z7-O1l">
+                            <rect key="frame" x="0.0" y="0.0" width="366" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="eFP-sr-9dQ"/>
+                            </constraints>
+                            <state key="normal" title="Dismiss"/>
+                            <connections>
+                                <action selector="handleDismiss:" destination="e7a-II-EKh" eventType="touchUpInside" id="Uvi-Ge-deT"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="d4J-l2-QNi">
+                            <rect key="frame" x="0.0" y="44" width="366" height="366"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="d4J-l2-QNi" secondAttribute="height" id="Wfu-IJ-FrR"/>
+                            </constraints>
+                        </imageView>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="jYx-B4-eoT">
+                            <rect key="frame" x="-2" y="410" width="370" height="47"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="QCT-YC-Dhp"/>
+                            </constraints>
+                        </slider>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRu-u1-d2A">
+                            <rect key="frame" x="0.0" y="456" width="366" height="338"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="z74-6C-IkK" firstAttribute="bottom" secondItem="8Cs-0O-uLo" secondAttribute="bottom" constant="24" id="5dG-S3-fWQ"/>
+                <constraint firstItem="z74-6C-IkK" firstAttribute="trailing" secondItem="8Cs-0O-uLo" secondAttribute="trailing" constant="24" id="8Rd-1l-7s2"/>
+                <constraint firstItem="8Cs-0O-uLo" firstAttribute="leading" secondItem="z74-6C-IkK" secondAttribute="leading" constant="24" id="Vzk-OO-0Pk"/>
+                <constraint firstItem="8Cs-0O-uLo" firstAttribute="top" secondItem="z74-6C-IkK" secondAttribute="top" id="kCO-l8-44a"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="z74-6C-IkK"/>
+            <connections>
+                <outlet property="episodeImageView" destination="d4J-l2-QNi" id="nLB-1K-LN2"/>
+                <outlet property="titleLabel" destination="KRu-u1-d2A" id="JVx-Vi-pIs"/>
+            </connections>
+            <point key="canvasLocation" x="405" y="-193"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="appicon" width="60" height="60"/>
+    </resources>
+</document>
