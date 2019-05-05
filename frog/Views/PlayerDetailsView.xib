@@ -89,37 +89,40 @@
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="236"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Kp-T3-x44">
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Kp-T3-x44">
                                     <rect key="frame" x="50" y="0.0" width="44" height="236"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="0wU-xl-3RA"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="rewind15"/>
+                                    <state key="normal" title="Button" image="rewind15">
+                                        <color key="titleShadowColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kpu-Wg-2Jc">
                                     <rect key="frame" x="94" y="0.0" width="50" height="236"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-7l-zGo">
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZt-7l-zGo">
                                     <rect key="frame" x="144" y="0.0" width="54" height="236"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="54" id="moi-eD-e0K"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="play"/>
-                                    <connections>
-                                        <action selector="playPauseButton:" destination="e7a-II-EKh" eventType="touchUpInside" id="WOk-EA-ybi"/>
-                                    </connections>
+                                    <state key="normal" title="Button" image="play">
+                                        <color key="titleShadowColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wHA-0T-C0t">
                                     <rect key="frame" x="198" y="0.0" width="50" height="236"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqu-Jz-dYD">
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqu-Jz-dYD">
                                     <rect key="frame" x="248" y="0.0" width="44" height="236"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="dgA-tJ-L5P"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="fastforward15"/>
+                                    <state key="normal" title="Button" image="fastforward15">
+                                        <color key="titleShadowColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
                                 </button>
                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yxH-wS-Nu6">
                                     <rect key="frame" x="292" y="0.0" width="74" height="236"/>
@@ -164,6 +167,7 @@
             <connections>
                 <outlet property="authorLabel" destination="4n7-cV-Coo" id="LhA-JO-aaW"/>
                 <outlet property="episodeImageView" destination="d4J-l2-QNi" id="nLB-1K-LN2"/>
+                <outlet property="playPauseButton" destination="tZt-7l-zGo" id="BNt-xZ-e1B"/>
                 <outlet property="titleLabel" destination="KRu-u1-d2A" id="JVx-Vi-pIs"/>
             </connections>
             <point key="canvasLocation" x="404.34782608695656" y="-193.52678571428569"/>
