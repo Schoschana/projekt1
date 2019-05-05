@@ -37,8 +37,28 @@ class PlayerDetailsView: UIView {
        
     }()
     
+    fileprivate func observerPlayerCurrentTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
+            
+            self.currentTimeLabel.text = time.toDisplayString()
+            let durationTime =  self.player.currentItem?.duration
+            self.durationLabel.text = durationTime?.toDisplayString()
+            
+            self.updateCurrentTimeSlider()
+        }
+    }
+    fileprivate func updateCurrentTimeSlider() {
+        let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+        let durationSeconds = CMTimeGetSeconds(player.currentItem!.duration ?? CMTimeMake(value: 1, timescale: 1))
+        let percentage = currentTimeSeconds / durationSeconds
+        
+        self.currentTimeSlider.value = Float(percentage)
+        
+       }
     override func awakeFromNib() {
-        super.awakeFromNib()
+        observerPlayerCurrentTime()
+        
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         player.addBoundaryTimeObserver(forTimes: times, queue: .main){
@@ -48,6 +68,17 @@ class PlayerDetailsView: UIView {
     }
     
     //MARK: - IB Actions and Outlets
+    
+    
+    
+    
+    @IBOutlet weak var currentTimeSlider: UISlider!
+    
+    
+    @IBOutlet weak var durationLabel: UILabel!
+    
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    
     
     @IBAction func handleDismiss(_ sender: Any) {
        self.removeFromSuperview()

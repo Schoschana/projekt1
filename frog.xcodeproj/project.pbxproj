@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2277D8CB227F963F007DA9CA /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277D8CA227F963F007DA9CA /* CMTime.swift */; };
 		22E5759E226FF36E00A2581E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5759D226FF36E00A2581E /* AppDelegate.swift */; };
 		22E575A0226FF36E00A2581E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5759F226FF36E00A2581E /* ViewController.swift */; };
 		22E575A3226FF36E00A2581E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E575A1226FF36E00A2581E /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		20979F897C9F949B54E57FE9 /* Pods-frog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frog.release.xcconfig"; path = "Target Support Files/Pods-frog/Pods-frog.release.xcconfig"; sourceTree = "<group>"; };
+		2277D8CA227F963F007DA9CA /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
 		22E5759A226FF36E00A2581E /* frog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E5759D226FF36E00A2581E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E5759F226FF36E00A2581E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				22E575C8227B77DF00A2581E /* String.swift */,
 				22E575CA227B988E00A2581E /* RSSFeed.swift */,
+				2277D8CA227F963F007DA9CA /* CMTime.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				22E575CF227BC01D00A2581E /* PlayerDetailsView.swift in Sources */,
 				22E575B32270523600A2581E /* PodcastsSearchController.swift in Sources */,
 				22E575C9227B77DF00A2581E /* String.swift in Sources */,
+				2277D8CB227F963F007DA9CA /* CMTime.swift in Sources */,
 				22E575A0226FF36E00A2581E /* ViewController.swift in Sources */,
 				22E5759E226FF36E00A2581E /* AppDelegate.swift in Sources */,
 				22E575C0227A072A00A2581E /* EpisodesController.swift in Sources */,
