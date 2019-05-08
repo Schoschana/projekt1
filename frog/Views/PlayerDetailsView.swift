@@ -70,6 +70,34 @@ class PlayerDetailsView: UIView {
     //MARK: - IB Actions and Outlets
     
     
+    @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
+        
+        let percentage = currentTimeSlider.value
+        guard let duration = player.currentItem?.duration else {return}
+        let duratonInSeconds = CMTimeGetSeconds(duration)
+        let seekTimeInSeconds = Float64(percentage) * duratonInSeconds
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+        player.seek(to: seekTime)
+    }
+    
+    @IBAction func handleFastForward(_ sender: Any) {
+        seekToCurrentTime(delta: 15)
+    }
+    @IBAction func handleRewind(_ sender: Any) {
+        seekToCurrentTime(delta: -15)
+    }
+    fileprivate func seekToCurrentTime( delta: Int64) {
+        let fifteenSeconds = CMTimeMake(value: delta, timescale: 1)
+        let seekTime = CMTimeAdd(player.currentTime(), fifteenSeconds)
+        player.seek(to: seekTime)
+    }
+    
+    
+    @IBAction func handleVolumeChange(_ sender: UISlider) {
+        
+        player.volume = sender.value
+        
+    }
     
     
     @IBOutlet weak var currentTimeSlider: UISlider!
