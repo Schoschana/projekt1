@@ -20,7 +20,13 @@ class APIService {
             feedUrl.replacingOccurrences(of: "http", with: "https")
         
         guard let url = URL(string: secureFeedUrl) else { return }
+        
+        
+        print("Before parser")
         let parser = FeedParser(URL: url)
+           print("After parser")
+        
+        
         parser.parseAsync(result: {( result) in
             print("Successfully parse feed:", result.isSuccess)
             // associative enumeration values
