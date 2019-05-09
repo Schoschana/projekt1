@@ -57,6 +57,9 @@ class PlayerDetailsView: UIView {
         
        }
     override func awakeFromNib() {
+        
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
+        
         observerPlayerCurrentTime()
         
         let time = CMTimeMake(value: 1, timescale: 3)
@@ -72,6 +75,13 @@ class PlayerDetailsView: UIView {
         }
     }
     
+    @objc func handleTapMaximize() {
+        let mainTabBarController =
+            UIApplication.shared.keyWindow?.rootViewController as?
+            MainTabBarController
+          mainTabBarController?.maximizePlayerDetails(episode: nil)
+        
+    }
     static func initFromNib() -> PlayerDetailsView {
         return Bundle.main.loadNibNamed("PlayerDetailsView", owner: self, options: nil)?.first as! PlayerDetailsView
     }
@@ -123,8 +133,9 @@ class PlayerDetailsView: UIView {
     
     
     @IBAction func handleDismiss(_ sender: Any) {
-       self.removeFromSuperview()
-    
+     
+       let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
+        mainTabBarController?.minimizePlayerDetails()
     }
     fileprivate func enlargeEpisodeImageView(){
     UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
