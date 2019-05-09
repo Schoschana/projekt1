@@ -32,7 +32,8 @@ class MainTabBarController: UITabBarController {
         view.addSubview(playerDetailsView)
         //enable auto layout
         playerDetailsView.translatesAutoresizingMaskIntoConstraints = false
-        playerDetailsView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        //playerDetailsView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        playerDetailsView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64).isActive = true
         playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         playerDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
