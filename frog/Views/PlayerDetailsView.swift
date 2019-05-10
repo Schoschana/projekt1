@@ -12,6 +12,7 @@ import AVKit
 class PlayerDetailsView: UIView {
     var episode: Episode! {
         didSet {
+            miniTitleLabel.text = episode.title
             titleLabel.text = episode.title
             authorLabel.text = episode.author
             
@@ -20,6 +21,7 @@ class PlayerDetailsView: UIView {
             
             guard let  url = URL(string: episode.imageUrl ?? "") else { return}
             episodeImageView.sd_setImage(with: url)
+            miniEpisodeImageView.sd_setImage(with: url)
         }
     }
     fileprivate func playEpisode() {
@@ -92,6 +94,29 @@ class PlayerDetailsView: UIView {
     }
     
     //MARK: - IB Actions and Outlets
+    
+    
+    
+    @IBOutlet weak var miniEpisodeImageView: UIImageView!
+    
+    
+    @IBOutlet weak var miniTitleLabel: UILabel!
+    
+   
+    @IBOutlet weak var miniPlayPauseButton: UIButton! {
+        didSet {
+            miniPlayPauseButton.addTarget(self, action: #selector( handlePlayPause), for: .touchUpInside)
+        }
+    }
+    
+    @IBOutlet weak var miniFastForwardButton: UIButton!
+    
+    
+    @IBOutlet weak var miniPlayerView: UIView!
+    
+    
+    @IBOutlet weak var maximizedStackView: UIStackView!
+    
     
     
     @IBAction func handleCurrentTimeSliderChange(_ sender: Any) {
@@ -174,10 +199,12 @@ class PlayerDetailsView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             enlargeEpisodeImageView()
         } else {
             player.pause()
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniplayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             shrinkEpisodeImageView()
         }
     }
