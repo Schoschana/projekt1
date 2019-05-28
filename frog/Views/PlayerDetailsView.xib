@@ -50,11 +50,21 @@
                                 </button>
                             </subviews>
                         </stackView>
+                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zQ-eU-Z6a">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.5"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="2Bh-wj-KWK"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="1zQ-eU-Z6a" firstAttribute="top" secondItem="RNN-iF-1IZ" secondAttribute="top" id="14w-hI-CRj"/>
                         <constraint firstAttribute="trailing" secondItem="fKl-0u-Snc" secondAttribute="trailing" constant="8" id="H7b-hv-EKN"/>
+                        <constraint firstItem="1zQ-eU-Z6a" firstAttribute="leading" secondItem="RNN-iF-1IZ" secondAttribute="leading" id="T8F-D2-G2P"/>
                         <constraint firstItem="fKl-0u-Snc" firstAttribute="top" secondItem="RNN-iF-1IZ" secondAttribute="top" constant="8" id="TSu-0W-YNB"/>
+                        <constraint firstAttribute="trailing" secondItem="1zQ-eU-Z6a" secondAttribute="trailing" id="YcW-dM-z6d"/>
                         <constraint firstAttribute="bottom" secondItem="fKl-0u-Snc" secondAttribute="bottom" constant="8" id="phU-T4-Dhd"/>
                         <constraint firstItem="fKl-0u-Snc" firstAttribute="leading" secondItem="RNN-iF-1IZ" secondAttribute="leading" constant="8" id="qh6-na-G9Z"/>
                         <constraint firstAttribute="height" constant="64" id="zj8-Ju-RmH"/>
