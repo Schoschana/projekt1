@@ -129,9 +129,8 @@ class PlayerDetailsView: UIView {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
            self.transform = .identity
             if translation.y < -200 || velocity.y < -500 {
-                let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
-                mainTabBarController?.maximizePlayerDetails(episode: nil)
-                gesture.isEnabled = false
+                UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: nil)
+                
             } else {
                 self.miniPlayerView.alpha = 1
                 self.maximizedStackView.alpha = 0
@@ -140,11 +139,9 @@ class PlayerDetailsView: UIView {
         
     }
     @objc func handleTapMaximize() {
-        let mainTabBarController =
-            UIApplication.shared.keyWindow?.rootViewController as?
-            MainTabBarController
-          mainTabBarController?.maximizePlayerDetails(episode: nil)
-        panGesture.isEnabled = false
+       
+        UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: nil)
+        
         
     }
     static func initFromNib() -> PlayerDetailsView {
@@ -224,7 +221,6 @@ class PlayerDetailsView: UIView {
      
        let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController
         mainTabBarController?.minimizePlayerDetails()
-        panGesture.isEnabled = true
         
     }
     fileprivate func enlargeEpisodeImageView(){
