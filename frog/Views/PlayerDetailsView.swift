@@ -8,8 +8,10 @@
 
 import UIKit
 import AVKit
+import MediaPlayer
 
 class PlayerDetailsView: UIView {
+    
     var episode: Episode! {
         didSet {
             miniTitleLabel.text = episode.title
@@ -88,9 +90,38 @@ class PlayerDetailsView: UIView {
             
         }
       }
+    
+    fileprivate func setupAudioSession() {
+        do {
+            
+            try
+                AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch let sessionErr {
+            print("Failed to activate session", sessionErr)
+        }
+        
+    }
+    fileprivate func  setupRemoteControl() {
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.isEnabled = true
+       commandCenter.playCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+            print("Should play podcast..")
+            return .success
+        }
+          commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+            print("Should pause podcast ... ")
+            return .success
+        }
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setupRemoteControl()
+        setupAudioSession()
         setupGestures ()
         observerPlayerCurrentTime()
         
