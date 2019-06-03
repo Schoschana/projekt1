@@ -38,7 +38,7 @@ class MainTabBarController: UITabBarController {
     }
  
     
-    func maximizePlayerDetails(episode: Episode?) {
+    func maximizePlayerDetails(episode: Episode?, playlistEpisodes: [Episode] = []) {
         
         minimizedTopAnchorConstraint.isActive = false
         maximizedTopAnchorConstraint.isActive = true

@@ -158,7 +158,14 @@ class PlayerDetailsView: UIView {
             self.handlePlayPause()
             return .success
         }
+        commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
     }
+    
+    var playlistEpisode = [Episode] ()
+    @objc fileprivate func handleNextTrack() {
+        print("Play next episode .... wich is???")
+    }
+    
     
     fileprivate func setupElapsedTime() {
         let elapsedTime = CMTimeGetSeconds(player.currentTime()); MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
