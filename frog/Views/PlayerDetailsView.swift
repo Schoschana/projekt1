@@ -75,26 +75,13 @@ class PlayerDetailsView: UIView {
             let durationTime =  self?.player.currentItem?.duration
             self?.durationLabel.text = durationTime?.toDisplayString()
             
-            self?.setupLockscreenCurrentTime()
+         
             
             self?.updateCurrentTimeSlider()
         }
     }
     
-    fileprivate func setupLockscreenCurrentTime() {
-        var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
-        // some modifications here
-        
-        guard let currentItem = player.currentItem else { return  }
-            let durationInSeconds = CMTimeGetSeconds(currentItem.duration)
-      let elapsedTime = CMTimeGetSeconds(player.currentTime())
-        
-        nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
-        
-        nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationInSeconds
-        
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-    }
+  
     fileprivate func updateCurrentTimeSlider() {
         let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
         let durationSeconds = CMTimeGetSeconds(player.currentItem!.duration ?? CMTimeMake(value: 1, timescale: 1))
@@ -175,14 +162,7 @@ class PlayerDetailsView: UIView {
             return .success
         }
     }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        setupRemoteControl()
-        setupAudioSession()
-        setupGestures ()
-        observerPlayerCurrentTime()
-        
+    fileprivate func observeBoundaryTime() {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         
@@ -193,7 +173,26 @@ class PlayerDetailsView: UIView {
             [weak self] in
             print("Episode started playing")
             self?.enlargeEpisodeImageView()
+            self?.setupLockscreenDuration()
         }
+    }
+    fileprivate func setupLockscreenDuration() {
+        guard let duration = player.currentItem?.duration  else {
+            return }
+            let durationSeconds = CMTimeGetSeconds(duration)
+            MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSeconds
+        
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setupRemoteControl()
+        setupAudioSession()
+        setupGestures ()
+        observerPlayerCurrentTime()
+        
+        observeBoundaryTime()
     }
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
          if gesture.state == .changed {
