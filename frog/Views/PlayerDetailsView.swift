@@ -141,7 +141,8 @@ class PlayerDetailsView: UIView {
             self.player.play()
         self.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
         self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
-            return .success
+        self.setupElapsedTime()
+        return .success
         }
           commandCenter.pauseCommand.isEnabled = true
         commandCenter.pauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
@@ -149,19 +150,22 @@ class PlayerDetailsView: UIView {
             self.player.pause()
             self.playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            self.setupElapsedTime()
             return .success
         }
         commandCenter.togglePlayPauseCommand.isEnabled = true
         commandCenter.togglePlayPauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
             self.handlePlayPause()
-        //     if self.player.timeControlStatus == .playing {
-         //        self.player.pause()
-         //    } else {
-          //       self.player.play()
-       //     }
             return .success
         }
     }
+    
+    fileprivate func setupElapsedTime() {
+        let elapsedTime = CMTimeGetSeconds(player.currentTime()); MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
+    }
+    
+    
+    
     fileprivate func observeBoundaryTime() {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
@@ -274,6 +278,7 @@ class PlayerDetailsView: UIView {
         let duratonInSeconds = CMTimeGetSeconds(duration)
         let seekTimeInSeconds = Float64(percentage) * duratonInSeconds
         let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
+        MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = seekTimeInSeconds
         player.seek(to: seekTime)
     }
     
