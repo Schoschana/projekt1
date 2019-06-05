@@ -159,13 +159,36 @@ class PlayerDetailsView: UIView {
             return .success
         }
         commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+        commandCenter.previousTrackCommand.addTarget(self, action: #selector(handleNextTrack))
     }
     
     var playlistEpisode = [Episode] ()
-    @objc fileprivate func handleNextTrack() {
-        print("Play next episode .... wich is???")
+    @objc fileprivate func handlePrevTrack() {
+        // 1. chek if playlistEpisodes.count == 0 then return
+        // 2. find out current episode index
+        // 3. if episode index is 0
     }
     
+    @objc fileprivate func handleNextTrack() {
+        if playlistEpisode.count == 0 {
+            return
+        }
+        let currentEpisodeIndex = playlistEpisode.index { (ep)-> Bool in
+            return self.episode.title == ep.title &&
+            self.episode.author == ep.author
+    }
+        guard let index = currentEpisodeIndex else { return }
+        
+        let nextEpisode: Episode
+        if index == playlistEpisode.count - 1 {
+            
+            nextEpisode = playlistEpisode[0]
+        } else {
+            nextEpisode = playlistEpisode[index + 1]
+        
+     }
+        self.episode = nextEpisode
+     }
     
     fileprivate func setupElapsedTime() {
         let elapsedTime = CMTimeGetSeconds(player.currentTime()); MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
@@ -195,12 +218,45 @@ class PlayerDetailsView: UIView {
         
     }
     
+    
+    
+        fileprivate func setupInterruptionObserver () {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(handleInterruption),
+                                                   name: .AVCaptureSessionWasInterrupted,
+                                                   object: nil)
+      
+}
+    @objc fileprivate func handleInterruption(notification: Notification) {
+        print("Interruption observed")
+        
+        guard let userInfo = notification.userInfo else { return }
+        guard  let type = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt
+        else { return }
+        if type == AVAudioSession.InterruptionType.began.rawValue {
+            print("Interruption began ")
+            
+            playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            
+        } else {
+            print("Interruption ended...")
+            player.play()
+            playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+        }
+        
+       
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupRemoteControl()
         setupAudioSession()
         setupGestures ()
+        setupInterruptionObserver()
+        
         observerPlayerCurrentTime()
         
         observeBoundaryTime()
