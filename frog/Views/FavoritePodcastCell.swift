@@ -13,26 +13,37 @@ class FavoritePodcastCell: UICollectionViewCell {
     let nameLabel = UILabel()
     let artistNameLabel = UILabel()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = .yellow
-        
+    fileprivate func stylizeUI() {
         nameLabel.text = "Podcast Name"
+        
+        nameLabel.font = UIFont.systemFont(ofSize: 16, weight:  .semibold)
         artistNameLabel.text = "Artist Name"
-        
-        let stackView = UIStackView(arrangedSubviews: [nameLabel, artistNameLabel])
+        artistNameLabel.font = UIFont.systemFont(ofSize: 14)
+        artistNameLabel.textColor = .lightGray
+    }
+    
+    fileprivate func setupViews() {
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        let stackView = UIStackView(arrangedSubviews: [imageView, nameLabel, artistNameLabel])
         stackView.axis = .vertical
-        
         stackView.axis = .vertical
-        
         // enable autp layout
         stackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
-        
-       stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        stylizeUI()
+        
+        
+        
+        setupViews()
         
         
         
