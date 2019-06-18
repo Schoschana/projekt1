@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		2277D8CB227F963F007DA9CA /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277D8CA227F963F007DA9CA /* CMTime.swift */; };
+		22A9827722B9755800F220E1 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9827622B9755800F220E1 /* UIApplication.swift */; };
+		22A9827922B9756800F220E1 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A9827822B9756700F220E1 /* UserDefaults.swift */; };
+		22A982A122B97F8300F220E1 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A982A022B97F8300F220E1 /* FavoritesController.swift */; };
+		22A982A322B97F9F00F220E1 /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A982A222B97F9F00F220E1 /* PlayerDetailsView+Gestures.swift */; };
+		22A982A522B9809300F220E1 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A982A422B9809300F220E1 /* FavoritePodcastCell.swift */; };
 		22E5759E226FF36E00A2581E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5759D226FF36E00A2581E /* AppDelegate.swift */; };
 		22E575A0226FF36E00A2581E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5759F226FF36E00A2581E /* ViewController.swift */; };
 		22E575A3226FF36E00A2581E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E575A1226FF36E00A2581E /* Main.storyboard */; };
@@ -33,6 +38,11 @@
 /* Begin PBXFileReference section */
 		20979F897C9F949B54E57FE9 /* Pods-frog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-frog.release.xcconfig"; path = "Target Support Files/Pods-frog/Pods-frog.release.xcconfig"; sourceTree = "<group>"; };
 		2277D8CA227F963F007DA9CA /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
+		22A9827622B9755800F220E1 /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIApplication.swift; path = "../../../Downloads/podcast_(1) 2/9. Favorites Persistence/PodcastsCourseLBTA/PodcastsCourseLBTA/Extensions/UIApplication.swift"; sourceTree = "<group>"; };
+		22A9827822B9756700F220E1 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = "../../../Downloads/podcast_(1) 2/9. Favorites Persistence/PodcastsCourseLBTA/PodcastsCourseLBTA/Extensions/UserDefaults.swift"; sourceTree = "<group>"; };
+		22A982A022B97F8300F220E1 /* FavoritesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesController.swift; path = "../../../../Downloads/podcast_(1) 2/9. Favorites Persistence/PodcastsCourseLBTA 4/PodcastsCourseLBTA/Controllers/FavoritesController.swift"; sourceTree = "<group>"; };
+		22A982A222B97F9F00F220E1 /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PlayerDetailsView+Gestures.swift"; path = "../../../../Downloads/podcast_(1) 2/9. Favorites Persistence/PodcastsCourseLBTA 4/PodcastsCourseLBTA/Views/PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
+		22A982A422B9809300F220E1 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritePodcastCell.swift; path = "../../../../Downloads/podcast_(1) 2/9. Favorites Persistence/PodcastsCourseLBTA 4/PodcastsCourseLBTA/Views/FavoritePodcastCell.swift"; sourceTree = "<group>"; };
 		22E5759A226FF36E00A2581E /* frog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E5759D226FF36E00A2581E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E5759F226FF36E00A2581E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +120,7 @@
 		22E575B1227051F900A2581E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				22A982A022B97F8300F220E1 /* FavoritesController.swift */,
 				22E575B22270523600A2581E /* PodcastsSearchController.swift */,
 				22E575BF227A072A00A2581E /* EpisodesController.swift */,
 			);
@@ -139,6 +150,8 @@
 				22E575BB2270BAC000A2581E /* PodcastCell.xib */,
 				22E575BD2270C07500A2581E /* PodcastCell.swift */,
 				22E575C3227A3E1600A2581E /* EpisodeCell.swift */,
+				22A982A422B9809300F220E1 /* FavoritePodcastCell.swift */,
+				22A982A222B97F9F00F220E1 /* PlayerDetailsView+Gestures.swift */,
 				22E575C4227A3E1600A2581E /* EpisodeCell.xib */,
 				22E575CC227BB86700A2581E /* PlayerDetailsView.xib */,
 				22E575CE227BC01D00A2581E /* PlayerDetailsView.swift */,
@@ -152,6 +165,8 @@
 				22E575C8227B77DF00A2581E /* String.swift */,
 				22E575CA227B988E00A2581E /* RSSFeed.swift */,
 				2277D8CA227F963F007DA9CA /* CMTime.swift */,
+				22A9827622B9755800F220E1 /* UIApplication.swift */,
+				22A9827822B9756700F220E1 /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,13 +318,18 @@
 				22E575CB227B988E00A2581E /* RSSFeed.swift in Sources */,
 				22E575CF227BC01D00A2581E /* PlayerDetailsView.swift in Sources */,
 				22E575B32270523600A2581E /* PodcastsSearchController.swift in Sources */,
+				22A9827722B9755800F220E1 /* UIApplication.swift in Sources */,
+				22A9827922B9756800F220E1 /* UserDefaults.swift in Sources */,
 				22E575C9227B77DF00A2581E /* String.swift in Sources */,
 				2277D8CB227F963F007DA9CA /* CMTime.swift in Sources */,
 				22E575A0226FF36E00A2581E /* ViewController.swift in Sources */,
 				22E5759E226FF36E00A2581E /* AppDelegate.swift in Sources */,
 				22E575C0227A072A00A2581E /* EpisodesController.swift in Sources */,
 				22E575B0226FF3D000A2581E /* MainTabBarController.swift in Sources */,
+				22A982A122B97F8300F220E1 /* FavoritesController.swift in Sources */,
 				22E575C5227A3E1600A2581E /* EpisodeCell.swift in Sources */,
+				22A982A322B97F9F00F220E1 /* PlayerDetailsView+Gestures.swift in Sources */,
+				22A982A522B9809300F220E1 /* FavoritePodcastCell.swift in Sources */,
 				22E575B92270A93B00A2581E /* APIService.swift in Sources */,
 				22E575B62270532800A2581E /* Podcast.swift in Sources */,
 				22E575C2227A3C9600A2581E /* Episode.swift in Sources */,

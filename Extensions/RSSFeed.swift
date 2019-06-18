@@ -7,26 +7,23 @@
 //
 
 import FeedKit
+
 extension RSSFeed {
     
-    func toEpisodes () -> [Episode] {
+    func toEpisodes() -> [Episode] {
+        let imageUrl = iTunes?.iTunesImage?.attributes?.href
         
-let imageUrl = iTunes?.iTunesImage?.attributes?.href
-var episodes = [Episode]() // blank Episode err
-
-    items?.forEach({ (feedItem) in
-    
-    var episode = Episode(feedItem: feedItem)
-    
-    if episode.imageUrl == nil {
-        episode.imageUrl = imageUrl
-    }
-    
-    episodes.append(episode)
-})
+        var episodes = [Episode]() // blank Episode array
+        items?.forEach({ (feedItem) in
+            var episode = Episode(feedItem: feedItem)
+            
+            if episode.imageUrl == nil {
+                episode.imageUrl = imageUrl
+            }
+            
+            episodes.append(episode)
+        })
         return episodes
-   
-
-   }
+    }
     
 }
