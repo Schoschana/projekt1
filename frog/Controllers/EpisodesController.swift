@@ -138,6 +138,8 @@ class EpisodesController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let downloadAction = UITableViewRowAction(style: .normal, title: "Download") { (_, _) in
             print("Downloading episode into UserDefaults")
+            let episode = self.episodes[indexPath.row]
+            UserDefaults.standard.downloadsEpisode(episode: episode)
         }
         return [downloadAction]
     }

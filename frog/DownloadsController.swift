@@ -10,8 +10,9 @@ import UIKit
 class DownloadsController: UITableViewController {
     
     fileprivate let cellId = "cellId"
-    
+     var episodes = UserDefaults.standard.downloadedEpisodes()
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupTableView()
         
     }
@@ -24,10 +25,11 @@ class DownloadsController: UITableViewController {
 }
      // MARK: - UITableView
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return episodes.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EpisodeCell
+        cell.episode = self.episodes[indexPath.row]
         return cell
         
     }

@@ -9,7 +9,7 @@
 import Foundation
 import FeedKit
 
-struct Episode: Encodable {
+struct Episode: Codable {
     let title: String
     let pubDate: Date
     let description: String
