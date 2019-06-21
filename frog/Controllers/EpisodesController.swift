@@ -101,7 +101,7 @@ class EpisodesController: UITableViewController {
         
         guard let podcast = self.podcast else { return}
 
-// frtch podcast
+//  podcast
         
      //       guard let  savedPodcastsData = UserDefaults.standard.data(forKey: favoritedPodcastKey) else {return}
         
@@ -132,7 +132,18 @@ class EpisodesController: UITableViewController {
         let nib = UINib(nibName: "EpisodeCell", bundle: nil)
     tableView.register(nib, forCellReuseIdentifier: cellId)
     tableView.tableFooterView = UIView()
+       
      }
+    //MARK: - UITableView
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let downloadAction = UITableViewRowAction(style: .normal, title: "Download") { (_, _) in
+            print("Downloading episode into UserDefaults")
+        }
+        return [downloadAction]
+    }
+    
+    
+    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
        activityIndicatorView.color = .darkGray
