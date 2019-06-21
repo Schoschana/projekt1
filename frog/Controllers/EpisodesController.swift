@@ -70,9 +70,19 @@ class EpisodesController: UITableViewController {
     
     //MARK: - Setup Work
     fileprivate func setupNavigationBarButtons() {
+        
+    let savedPodcast = UserDefaults.standard.savedPodcasts()
+        let hasFavorited = savedPodcast.index(where: { $0.trackName == self.podcast?.trackName  && $0.artistName == self.podcast?.artistName }) != nil
+        if  hasFavorited {
+            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "35 heart"), style: .plain, target: nil, action: nil)
+        } else {
+     
+        
         navigationItem.rightBarButtonItems = [UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
         UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts))]
    }
+        }
      @objc fileprivate func handleFetchSavedPodcasts() {
         print("Fetching saved Podcasts from UserDefaults")
         
