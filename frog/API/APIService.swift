@@ -15,6 +15,19 @@ class APIService {
     let baseiTunesSearchURL = "https://itunes.apple.com/search"
     static let shared = APIService()
     
+    
+    func downloadEpisode(episode: Episode) {
+        print("Downloading episode using Alamofire at stream url: ", episode.streamUrl)
+     //  let downloadRequest = DownloadRequest.suggestedDownloadDestination()
+        Alamofire.download(episode.streamUrl).downloadProgress { (progress) in
+            print(progress.fractionCompleted)
+        }
+      
+       
+    }
+    
+    
+    
     func fetchEpisodes(feedUrl: String, competionHandler: @escaping([Episode])  -> ()) {
         let secureFeedUrl = feedUrl.contains("https") ? feedUrl :
             feedUrl.replacingOccurrences(of: "http", with: "https")

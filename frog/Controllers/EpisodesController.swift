@@ -117,8 +117,6 @@ class EpisodesController: UITableViewController {
         let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
         
         
-        
-        
         UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
         showBadgeHighlight()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "35 heart"), style: .plain, target: nil, action: nil)
@@ -140,6 +138,9 @@ class EpisodesController: UITableViewController {
             print("Downloading episode into UserDefaults")
             let episode = self.episodes[indexPath.row]
             UserDefaults.standard.downloadsEpisode(episode: episode)
+            
+            // download the podcast episode using Alamore
+            APIService.shared.downloadEpisode(episode: episode)
         }
         return [downloadAction]
     }
