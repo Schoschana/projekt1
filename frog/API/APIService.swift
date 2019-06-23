@@ -19,14 +19,16 @@ class APIService {
     func downloadEpisode(episode: Episode) {
         print("Downloading episode using Alamofire at stream url: ", episode.streamUrl)
      //  let downloadRequest = DownloadRequest.suggestedDownloadDestination()
-        Alamofire.download(episode.streamUrl).downloadProgress { (progress) in
+        
+        
+        let downloadRequest = DownloadRequest.suggestedDownloadDestination()
+        
+        Alamofire.download(episode.streamUrl, to: downloadRequest).downloadProgress { (progress) in
             print(progress.fractionCompleted)
+            }.response { (resp) in
+                print(resp.destinationURL?.absoluteString ?? "")
         }
-      
-       
-    }
-    
-    
+        }
     
     func fetchEpisodes(feedUrl: String, competionHandler: @escaping([Episode])  -> ()) {
         let secureFeedUrl = feedUrl.contains("https") ? feedUrl :
