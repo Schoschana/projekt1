@@ -27,6 +27,11 @@ class APIService {
             print(progress.fractionCompleted)
             }.response { (resp) in
                 print(resp.destinationURL?.absoluteString ?? "")
+                // I want to update UserDefaults downloaded episodes with this temp file somehow
+                
+                let downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
+                guard  let index = downloadedEpisodes.index(where: { $0.title == episode.title && $0.author == episode.author }) else { return}
+                
         }
         }
     
