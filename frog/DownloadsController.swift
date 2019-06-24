@@ -15,7 +15,15 @@ class DownloadsController: UITableViewController {
         super.viewDidLoad()
         
         setupTableView()
+        setupObservers()
         
+        
+    }
+    fileprivate func setupObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress), name: .downloadProgress, object: nil)
+    }
+    @objc fileprivate func handleDownloadProgress() {
+        print("123")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
