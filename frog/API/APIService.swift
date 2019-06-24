@@ -29,8 +29,20 @@ class APIService {
                 print(resp.destinationURL?.absoluteString ?? "")
                 // I want to update UserDefaults downloaded episodes with this temp file somehow
                 
-                let downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
+                var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
                 guard  let index = downloadedEpisodes.index(where: { $0.title == episode.title && $0.author == episode.author }) else { return}
+                downloadedEpisodes[index].fileUrl = resp.destinationURL?.absoluteString ?? ""
+                
+              do{
+                    let data = try JSONEncoder().encode(downloadedEpisodes)
+                UserDefaults.standard.set(data, forKey: UserDefaults.downloadsEpisodesKey)
+                
+              } catch let err {
+                print("Failed to encode downloaded episodes with file url update", err)
+                }
+                
+                
+              
                 
         }
         }
