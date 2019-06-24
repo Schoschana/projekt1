@@ -22,8 +22,11 @@ class DownloadsController: UITableViewController {
     fileprivate func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress), name: .downloadProgress, object: nil)
     }
-    @objc fileprivate func handleDownloadProgress() {
-        print("123")
+    @objc fileprivate func handleDownloadProgress(notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String: Any] else {return}
+        guard let progress =  userInfo["progress"]as? Double else {return }
+        guard let title = userInfo["title"] as? String else {return }
+        print(progress, title)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

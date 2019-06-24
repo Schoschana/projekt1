@@ -49,12 +49,22 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vjt-bC-Zzr">
+                        <rect key="frame" x="28" y="44.5" width="76.5" height="34.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <size key="shadowOffset" width="0.0" height="1"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="NyD-wi-Jvh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="5hF-99-zef"/>
                     <constraint firstItem="MwW-Gc-l5P" firstAttribute="leading" secondItem="NyD-wi-Jvh" secondAttribute="trailing" constant="16" id="8EU-NO-uQY"/>
                     <constraint firstItem="MwW-Gc-l5P" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9NI-fA-vhu"/>
                     <constraint firstAttribute="trailing" secondItem="MwW-Gc-l5P" secondAttribute="trailing" constant="16" id="CxC-5o-9FQ"/>
+                    <constraint firstItem="Vjt-bC-Zzr" firstAttribute="centerY" secondItem="NyD-wi-Jvh" secondAttribute="centerY" id="Rhp-yi-P0Q"/>
+                    <constraint firstItem="Vjt-bC-Zzr" firstAttribute="centerX" secondItem="NyD-wi-Jvh" secondAttribute="centerX" id="Zic-jB-e9E"/>
                     <constraint firstItem="NyD-wi-Jvh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qEq-Cs-ANU"/>
                 </constraints>
             </tableViewCellContentView>
@@ -62,6 +72,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="01F-6R-UKf" id="XIu-g9-Ljj"/>
                 <outlet property="episodeImageView" destination="NyD-wi-Jvh" id="2kD-NY-YWc"/>
+                <outlet property="progressLabel" destination="Vjt-bC-Zzr" id="Oli-QX-ZzB"/>
                 <outlet property="pubDateLabel" destination="cPx-Fq-y5z" id="byn-P9-TW9"/>
                 <outlet property="titleLabel" destination="XIy-O0-r87" id="3QU-Ps-ROz"/>
             </connections>
