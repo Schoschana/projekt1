@@ -37,6 +37,15 @@ class DownloadsController: UITableViewController {
         
         if episode.fileUrl != nil {
              UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
+        } else {
+            let alertController = UIAlertController(title: "File URL not foud", message: "Cannot find local file , play using stream url instead ", preferredStyle: .actionSheet)
+            
+            alertController.addAction(UIAlertAction(title: "Yer", style: .default, handler: { (_) in
+                 UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
+            }))
+            
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            present(alertController, animated: true)
         }
        
     }
