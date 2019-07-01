@@ -11,13 +11,13 @@ class DownloadsController: UITableViewController {
     
     fileprivate let cellId = "cellId"
      var episodes = UserDefaults.standard.downloadedEpisodes()
-    override func viewDidLoad() {
+    
+        override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setupObservers()
-        
-        
+       
     }
     fileprivate func setupObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleDownloadProgress), name: .downloadProgress, object: nil)
@@ -81,31 +81,50 @@ class DownloadsController: UITableViewController {
         let episode = self.episodes[indexPath.row]
         
         if episode.fileUrl != nil {
-             UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
+            UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
         } else {
-            let alertController = UIAlertController(title: "File URL not foud", message: "Cannot find local file , play using stream url instead ", preferredStyle: .actionSheet)
+            let alertController = UIAlertController(title: "File URL not found", message: "Cannot find local file, play using stream url instead", preferredStyle: .actionSheet)
             
             alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (_) in
-                 UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
+                UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
             }))
             
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            
             present(alertController, animated: true)
         }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let episode = self.episodes[indexPath.row]
+        episodes.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
        
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! EpisodeCell
         cell.episode = self.episodes[indexPath.row]
-        return cell
         
+        return cell
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 134
-    
-        
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -52,7 +52,7 @@ class APIService {
                 
               do{
                     let data = try JSONEncoder().encode(downloadedEpisodes)
-                UserDefaults.standard.set(data, forKey: UserDefaults.downloadsEpisodesKey)
+                UserDefaults.standard.set(data, forKey: UserDefaults.downloadedEpisodesKey)
                 
               } catch let err {
                 print("Failed to encode downloaded episodes with file url update", err)
