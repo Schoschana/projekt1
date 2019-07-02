@@ -1,9 +1,9 @@
 //
 //  RSSFeed.swift
-//  frog
+//  PodcastsCourseLBTA
 //
-//  Created by Lili on 02/05/2019.
-//  Copyright © 2019 Lili. All rights reserved.
+//  Created by Brian Voong on 2/27/18.
+//  Copyright © 2018 Brian Voong. All rights reserved.
 //
 
 import FeedKit

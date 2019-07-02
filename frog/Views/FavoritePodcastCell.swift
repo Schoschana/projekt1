@@ -1,13 +1,24 @@
 //
 //  FavoritePodcastCell.swift
-//  frog
+//  PodcastsCourseLBTA
 //
-//  Created by Lili on 06/06/2019.
-//  Copyright © 2019 Lili. All rights reserved.
+//  Created by Brian Voong on 3/13/18.
+//  Copyright © 2018 Brian Voong. All rights reserved.
 //
 
 import UIKit
+
 class FavoritePodcastCell: UICollectionViewCell {
+    
+    var podcast: Podcast! {
+        didSet {
+            nameLabel.text = podcast.trackName
+            artistNameLabel.text = podcast.artistName
+            
+            let url = URL(string: podcast.artworkUrl600 ?? "")
+            imageView.sd_setImage(with: url)
+        }
+    }
     
     let imageView = UIImageView(image: #imageLiteral(resourceName: "appicon"))
     let nameLabel = UILabel()
@@ -15,8 +26,7 @@ class FavoritePodcastCell: UICollectionViewCell {
     
     fileprivate func stylizeUI() {
         nameLabel.text = "Podcast Name"
-        
-        nameLabel.font = UIFont.systemFont(ofSize: 16, weight:  .semibold)
+        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         artistNameLabel.text = "Artist Name"
         artistNameLabel.font = UIFont.systemFont(ofSize: 14)
         artistNameLabel.textColor = .lightGray
@@ -24,12 +34,15 @@ class FavoritePodcastCell: UICollectionViewCell {
     
     fileprivate func setupViews() {
         imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        
         let stackView = UIStackView(arrangedSubviews: [imageView, nameLabel, artistNameLabel])
+        
         stackView.axis = .vertical
-        stackView.axis = .vertical
-        // enable autp layout
+        // enables auto layout
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         addSubview(stackView)
+        
         stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -40,17 +53,12 @@ class FavoritePodcastCell: UICollectionViewCell {
         super.init(frame: frame)
         
         stylizeUI()
-        
-        
-        
         setupViews()
         
-        
-        
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

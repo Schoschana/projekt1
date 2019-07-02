@@ -1,9 +1,9 @@
 //
 //  PlayerDetailsView.swift
-//  frog
+//  PodcastsCourseLBTA
 //
-//  Created by Lili on 03/05/2019.
-//  Copyright © 2019 Lili. All rights reserved.
+//  Created by Brian Voong on 2/28/18.
+//  Copyright © 2018 Brian Voong. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,7 @@ import AVKit
 import MediaPlayer
 
 class PlayerDetailsView: UIView {
+    
     var episode: Episode! {
         didSet {
             miniTitleLabel.text = episode.title
@@ -46,9 +47,8 @@ class PlayerDetailsView: UIView {
     }
     
     fileprivate func playEpisode() {
-        if episode.fileUrl != nil{
+        if episode.fileUrl != nil {
             playEpisodeUsingFileUrl()
-            
         } else {
             print("Trying to play episode at url:", episode.streamUrl)
             
@@ -57,27 +57,24 @@ class PlayerDetailsView: UIView {
             player.replaceCurrentItem(with: playerItem)
             player.play()
         }
-        
     }
     
-    
     fileprivate func playEpisodeUsingFileUrl() {
-    print("Attempt to play episode with file url:", episode.fileUrl ?? "")
-    // lets figure out the file name for out episode file url
-    guard let fileURL = URL(string:episode.fileUrl ?? "") else
+        print("Attempt to play episode with file url:", episode.fileUrl ?? "")
+        
+        // let's figure out the file name for our episode file url
+        guard let fileURL = URL(string: episode.fileUrl ?? "") else { return }
+        let fileName = fileURL.lastPathComponent
+        
+        guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        
+        trueLocation.appendPathComponent(fileName)
+        print("True Location of episode:", trueLocation.absoluteString)
+        let playerItem = AVPlayerItem(url: trueLocation)
+        player.replaceCurrentItem(with: playerItem)
+        player.play()
+    }
     
-    { return }
-    let fileName = fileURL.lastPathComponent
-    
-    guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-    trueLocation.appendPathComponent(fileName)
-    print("True Location of episode:", trueLocation.absoluteString)
-    
-    // guard let url = URL(string: episode.fileUrl ?? "") else { return }
-    let playerItem = AVPlayerItem(url: trueLocation)
-    player.replaceCurrentItem(with: playerItem)
-    player.play()
-      }
     let player: AVPlayer = {
         let avPlayer = AVPlayer()
         avPlayer.automaticallyWaitsToMinimizeStalling = false
@@ -182,7 +179,7 @@ class PlayerDetailsView: UIView {
         // 1. check if playlistEpisodes.count == 0 then return
         // 2. find out current episode index
         // 3. if episode index is 0, wrap to end of list somehow..
-        // otherwise play episode index - 1
+              // otherwise play episode index - 1
         if playlistEpisodes.isEmpty {
             return
         }
@@ -251,7 +248,7 @@ class PlayerDetailsView: UIView {
         // don't forget to remove self on deinit
         NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption(notification:)), name: AVAudioSession.interruptionNotification, object: nil)
         
-//        NotificationCenter.default.addObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
+        //        NotificationCenter.default.addObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
         
     }
     
@@ -280,7 +277,7 @@ class PlayerDetailsView: UIView {
                 playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
                 miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             }
-            
+         
             
         }
     }
@@ -416,4 +413,3 @@ class PlayerDetailsView: UIView {
         }
     }
 }
-

@@ -50,7 +50,7 @@ class EpisodesController: UITableViewController {
         let hasFavorited = savedPodcasts.index(where: { $0.trackName == self.podcast?.trackName && $0.artistName == self.podcast?.artistName }) != nil
         if hasFavorited {
             // setting up our heart icon
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "35 heart"), style: .plain, target: nil, action: nil)
         } else {
             navigationItem.rightBarButtonItems = [
                 UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
@@ -86,7 +86,7 @@ class EpisodesController: UITableViewController {
         UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
         
         showBadgeHighlight()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "35 heart"), style: .plain, target: nil, action: nil)
     }
     
     fileprivate func showBadgeHighlight() {

@@ -1,9 +1,9 @@
 //
 //  MainTabBarController.swift
-//  frog
+//  PodcastsCourseLBTA
 //
-//  Created by Lili on 24/04/2019.
-//  Copyright © 2019 Lili. All rights reserved.
+//  Created by Brian Voong on 2/13/18.
+//  Copyright © 2018 Brian Voong. All rights reserved.
 //
 
 import UIKit
@@ -73,7 +73,7 @@ class MainTabBarController: UITabBarController {
         print("Setting up PlayerDetailsView")
         
         // use auto layout
-        //        view.addSubview(playerDetailsView)
+//        view.addSubview(playerDetailsView)
         view.insertSubview(playerDetailsView, belowSubview: tabBar)
         
         // enables auto layout
@@ -86,7 +86,7 @@ class MainTabBarController: UITabBarController {
         bottomAnchorConstraint.isActive = true
         
         minimizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
-        //        minimizedTopAnchorConstraint.isActive = true
+//        minimizedTopAnchorConstraint.isActive = true
         
         playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -108,7 +108,7 @@ class MainTabBarController: UITabBarController {
     
     fileprivate func generateNavigationController(for rootViewController: UIViewController, title: String, image: UIImage) -> UIViewController {
         let navController = UINavigationController(rootViewController: rootViewController)
-        //        navController.navigationBar.prefersLargeTitles = true
+//        navController.navigationBar.prefersLargeTitles = true
         rootViewController.navigationItem.title = title
         navController.tabBarItem.title = title
         navController.tabBarItem.image = image
